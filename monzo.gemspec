@@ -26,4 +26,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "webmock", "~> 3.0"
   spec.add_development_dependency "factory_girl", "4.7.0"
   spec.add_development_dependency "byebug", "~> 9.0"
+
+  spec.add_dependency 'map', '~> 6.6'
 end

@@ -1,3 +1,5 @@
+require 'map'
+
 module Monzo
 
   # Public: Transactions are movements of funds into or out of an account.
@@ -5,38 +7,15 @@ module Monzo
   #         positive transactions represent credits (ie. receiving money).
   class Transaction
 
-    attr_reader :id, :created, :description, :amount, :currency,
-      :merchant, :notes, :metadata, :account_balance, :attachments,
-      :category, :is_load, :settled, :local_amount, :local_currency,
-      :updated, :account_id, :counterparty, :scheme, :dedupe_id,
-      :originator, :include_in_spending
-
     # Public: Initialize a Transaction.
     #
     # params - A Hash of transaction parameters.
     def initialize(params)
-      @id = params[:id]
-      @created = params[:created]
-      @description = params[:description]
-      @amount = params[:amount]
-      @currency = params[:currency]
-      @merchant = params[:merchant]
-      @notes = params[:notes]
-      @metadata = params[:metadata]
-      @account_balance = params[:account_balance]
-      @attachments = params[:attachments]
-      @category = params[:category]
-      @is_load = params[:is_load]
-      @settled = params[:settled]
-      @local_amount = params[:local_amount]
-      @local_currency = params[:local_currency]
-      @updated = params[:updated]
-      @account_id = params[:account_id]
-      @counterparty = params[:counterparty]
-      @scheme = params[:scheme]
-      @dedupe_id = params[:dedupe_id]
-      @originator = params[:originator]
-      @include_in_spending = params[:include_in_spending]
+      @params = Map.new(params)
+    end
+
+    def method_missing(m, *_)
+      @params[m]
     end
 
     # Public: Find a transaction with the given transaction id.

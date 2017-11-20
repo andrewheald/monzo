@@ -35,7 +35,7 @@ describe Monzo::Transaction do
     end
 
     it "should have metadata" do
-      expect(@transaction.metadata).to eql({:trip_id => "trip_00002At41IVaHGr9HrabW6"})
+      expect(@transaction.metadata).to eql({"trip_id" => "trip_00002At41IVaHGr9HrabW6"})
     end
 
     it "should have an account balance" do
